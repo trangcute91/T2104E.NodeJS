@@ -1,0 +1,13 @@
+.tox{
+    float: left;
+    width: 1000px;
+}
+.child-1{
+    background-color: red;
+}
+.child-2{
+    background-color: green;
+}
+.child-3{
+    background-color: orange;
+}
