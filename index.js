@@ -11,12 +11,35 @@ app.listen(port,function () {
 });
 //  cấp quyền truy cập các file static(file tĩnh)  (css,log,jqury...)
 app.use(express.static("public"));
+app.set("view engine","ejs");
+var count = 0;
 //phân công cồng việc -bộ định tuyến
 app.get("/",function (req,res) {
-    res.send("xin kính chào quý khách...");
+    // res.send("xin kính chào quý khách...");
+    res.render("home",{
+        count: count
+    });
 });
 app.get("/ke-toan",function (req,res) {
-    res.send("xin vui  lòng nạp tiền...");
+    // res.send("xin vui  lòng nạp tiền...");
+    count++;
+    var products = [
+        {
+            id:1,
+            name:"Product 1",
+        },
+        {
+            id:2,
+            name:"Product 2",
+        },
+        {
+            id:3,
+            name:"Product 3",
+        },
+    ]
+    res.render("ke-toan",{
+        products:products
+    });
 });
 app.get("/bt",function (req,res) {
     res.sendFile(__dirname+"/public/demoboostrap.html");
