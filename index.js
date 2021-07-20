@@ -5,7 +5,7 @@
 
 var express = require("express");
 var app = express(); //tao ứng dụng từ express module
-var port = 5000; // tạo cổng vào(hosting)
+var port = process.env.PORT | 5000; // tạo cổng vào(hosting)
 app.listen(port,function () {
     console.log("Server is running...")
 });
@@ -43,4 +43,18 @@ app.get("/ke-toan",function (req,res) {
 });
 app.get("/bt",function (req,res) {
     res.sendFile(__dirname+"/public/demoboostrap.html");
+});
+app.get("/chitiet",function (req,res) {
+    var masp = req.query.id;
+    var p = {};
+    for (var i=0;i<products.length; i++) {
+        if (products[i].id == masp) {
+            p = products[i];
+            break;
+        }
+    }
+    res.render("/chitiet",{
+        masp:masp,
+        p: p
+    });
 });
