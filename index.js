@@ -5,7 +5,7 @@
 
 var express = require("express");
 var app = express(); //tao ứng dụng từ express module
-var port = process.env.PORT | 5000; // tạo cổng vào(hosting)
+var port = process.env.PORT || 5000; // tạo cổng vào(hosting)
 app.listen(port,function () {
     console.log("Server is running...")
 });
